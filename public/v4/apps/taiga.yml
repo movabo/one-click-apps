@@ -51,6 +51,8 @@ services:
 
   $$cap_appname-async:
     image: taigaio/taiga-back:$$cap_taiga_back_version
+    # Maybe change to
+    # /bin/sh -c "/bin/sh /taiga-back/docker/async_entrypoint.sh & while sleep 300; do python taiga-back/manage.py send_notifications; done"
     entrypoint: ["/taiga-back/docker/async_entrypoint.sh"]
     environment:
       POSTGRES_DB: $$cap_postgres_db
